@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "deny": [
+      "src/test/**",
+      ".harness/**",
+      "specs/**",
+      "config/checkstyle.xml",
+      "config/spotbugs-exclude.xml"
+    ]
+  }
+}
