@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+ratelimiter:
+  tiers:
+    free:
+      capacity: 5
+      refill-rate: 1.0
+    pro:
+      capacity: 20
+      refill-rate: 5.0
+    enterprise:
+      capacity: 100
+      refill-rate: 25.0
+  client-tiers:
+    "key_free_123": "free"
+    "key_pro_456": "pro"
+    "key_ent_789": "enterprise"
