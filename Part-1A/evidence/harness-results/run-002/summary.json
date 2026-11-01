@@ -1,0 +1,142 @@
+{
+  "run_name": "run-002",
+  "timestamp": "2026-11-01T14:35:00.307507",
+  "git_commit": "79739349734955692a14e60c1ee9c7defe3cf483",
+  "java_version": "17.0.4.1",
+  "gates": {
+    "gate_0_integrity": {
+      "passed": true,
+      "status": "PASS",
+      "message": "All integrity baseline checks passed."
+    },
+    "gate_1_lint": {
+      "passed": false,
+      "status": "FAIL",
+      "violations_count": 1,
+      "violations": [
+        "src\\main\\java\\edu\\sezg534\\ratelimiter\\config\\TierProperties.java:5 - Unused import - jakarta.validation.constraints.NotBlank."
+      ],
+      "stdout_tail": "----\n[INFO] Building tiered-rate-limiter 1.0.0\n[INFO]   from pom.xml\n[INFO] --------------------------------[ jar ]---------------------------------\n[INFO] \n[INFO] --- checkstyle:3.3.1:check (default-cli) @ tiered-rate-limiter ---\n[INFO] Starting audit...\n[WARN] C:\\Java Codes\\Assignment-1\\Part-1A\\src\\main\\java\\edu\\sezg534\\ratelimiter\\config\\TierProperties.java:5:8: Unused import - jakarta.validation.constraints.NotBlank. [UnusedImports]\nAudit done.\n[WARNING] src\\main\\java\\edu\\sezg534\\ratelimiter\\config\\TierProperties.java:[5,8] (imports) UnusedImports: Unused import - jakarta.validation.constraints.NotBlank.\n[INFO] ------------------------------------------------------------------------\n[INFO] BUILD FAILURE\n[INFO] ------------------------------------------------------------------------\n[INFO] Total time:  4.399 s\n[INFO] Finished at: 2026-11-01T14:35:07+05:30\n[INFO] ------------------------------------------------------------------------\n[ERROR] Failed to execute goal org.apache.maven.plugins:maven-checkstyle-plugin:3.3.1:check (default-cli) on project tiered-rate-limiter: You have 1 Checkstyle violation. -> [Help 1]\n[ERROR] \n[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.\n[ERROR] Re-run Maven using the -X switch to enable full debug logging.\n[ERROR] \n[ERROR] For more information about the errors and possible solutions, please read the following articles:\n[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException\n",
+      "message": "Checkstyle reported 1 violations."
+    },
+    "gate_2_security": {
+      "passed": false,
+      "status": "FAIL",
+      "findings_count": 8,
+      "violations": [
+        "[MALICIOUS_CODE][Priority 2] EI_EXPOSE_REP: edu.sezg534.ratelimiter.config.TierProperties.getClientTiers() may expose internal representation by returning TierProperties.clientTiers",
+        "[MALICIOUS_CODE][Priority 2] EI_EXPOSE_REP: edu.sezg534.ratelimiter.config.TierProperties.getTiers() may expose internal representation by returning TierProperties.tiers",
+        "[MALICIOUS_CODE][Priority 2] EI_EXPOSE_REP2: edu.sezg534.ratelimiter.config.TierProperties.setClientTiers(Map) may expose internal representation by storing an externally mutable object into TierProperties.clientTiers",
+        "[MALICIOUS_CODE][Priority 2] EI_EXPOSE_REP2: edu.sezg534.ratelimiter.config.TierProperties.setTiers(Map) may expose internal representation by storing an externally mutable object into TierProperties.tiers",
+        "[MALICIOUS_CODE][Priority 2] EI_EXPOSE_REP2: new edu.sezg534.ratelimiter.limiter.RateLimiterService(TierProperties, BucketStore) may expose internal representation by storing an externally mutable object into RateLimiterService.tierProperties",
+        "[SECURITY][Priority 3] SPRING_ENDPOINT: edu.sezg534.ratelimiter.web.HealthController is a Spring endpoint (Controller)",
+        "[MALICIOUS_CODE][Priority 2] EI_EXPOSE_REP2: new edu.sezg534.ratelimiter.web.RateLimitFilter(RateLimiterService, ObjectMapper) may expose internal representation by storing an externally mutable object into RateLimitFilter.objectMapper",
+        "[SECURITY][Priority 3] SPRING_ENDPOINT: edu.sezg534.ratelimiter.web.ResourceController is a Spring endpoint (Controller)"
+      ],
+      "stdout_tail": "17] SPRING_ENDPOINT\n[ERROR] Medium: new edu.sezg534.ratelimiter.web.RateLimitFilter(RateLimiterService, ObjectMapper) may expose internal representation by storing an externally mutable object into RateLimitFilter.objectMapper [edu.sezg534.ratelimiter.web.RateLimitFilter] At RateLimitFilter.java:[line 39] EI_EXPOSE_REP2\n[ERROR] Low: edu.sezg534.ratelimiter.web.ResourceController is a Spring endpoint (Controller) [edu.sezg534.ratelimiter.web.ResourceController] At ResourceController.java:[line 17] SPRING_ENDPOINT\n[INFO] \n\n\nTo see bug detail using the Spotbugs GUI, use the following command \"mvn spotbugs:gui\"\n\n\n\n[INFO] ------------------------------------------------------------------------\n[INFO] BUILD FAILURE\n[INFO] ------------------------------------------------------------------------\n[INFO] Total time:  21.731 s\n[INFO] Finished at: 2026-11-01T14:35:31+05:30\n[INFO] ------------------------------------------------------------------------\n[ERROR] Failed to execute goal com.github.spotbugs:spotbugs-maven-plugin:4.8.3.1:check (default-cli) on project tiered-rate-limiter: failed with 8 bugs and 0 errors  -> [Help 1]\n[ERROR] \n[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.\n[ERROR] Re-run Maven using the -X switch to enable full debug logging.\n[ERROR] \n[ERROR] For more information about the errors and possible solutions, please read the following articles:\n[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException\n",
+      "message": "SpotBugs reported 8 security/correctness findings."
+    },
+    "gate_3_tests": {
+      "passed": true,
+      "status": "PASS",
+      "total_tests": 23,
+      "passed_tests_count": 23,
+      "failures_count": 0,
+      "failed_tests": [],
+      "passed_tests": [
+        "edu.sezg534.ratelimiter.contract.HttpContractTest#testBurstRequestsReturn200",
+        "edu.sezg534.ratelimiter.contract.HttpContractTest#testHealthEndpointNeverRateLimited",
+        "edu.sezg534.ratelimiter.contract.HttpContractTest#testUnknownApiKeyReturns401",
+        "edu.sezg534.ratelimiter.contract.HttpContractTest#testResponseContainsRateLimitHeaders",
+        "edu.sezg534.ratelimiter.contract.HttpContractTest#testMissingApiKeyReturns401",
+        "edu.sezg534.ratelimiter.contract.HttpContractTest#testImmediateExcessReturns429",
+        "edu.sezg534.ratelimiter.contract.HttpContractTest#testErrorBodiesNeverEchoFullApiKey",
+        "edu.sezg534.ratelimiter.contract.HttpContractTest#testThrottledResponseContainsRetryAfter",
+        "edu.sezg534.ratelimiter.unit.InMemoryBucketStoreTest#testStoreConcurrentBucketAccess",
+        "edu.sezg534.ratelimiter.unit.InMemoryBucketStoreTest#testClientBucketIsolation",
+        "edu.sezg534.ratelimiter.unit.RateLimiterServiceTest#testServiceIsolatesClients",
+        "edu.sezg534.ratelimiter.unit.RateLimiterServiceTest#testUnknownApiKeyReturnsEmpty",
+        "edu.sezg534.ratelimiter.unit.RateLimiterServiceTest#testEvaluateReturnsCorrectDecision",
+        "edu.sezg534.ratelimiter.unit.RateLimiterServiceTest#testServiceEnforcesConfiguredTierLimits",
+        "edu.sezg534.ratelimiter.unit.RateLimiterServiceTest#testDecisionContainsTelemetryMetrics",
+        "edu.sezg534.ratelimiter.unit.TierPropertiesTest#testInvalidConfigValidationFails",
+        "edu.sezg534.ratelimiter.unit.TierPropertiesTest#testTiersConfigurationValues",
+        "edu.sezg534.ratelimiter.unit.TokenBucketTest#testExcessRequestReturns429",
+        "edu.sezg534.ratelimiter.unit.TokenBucketTest#testTokensNeverExceedCapacityAfterExtendedIdle",
+        "edu.sezg534.ratelimiter.unit.TokenBucketTest#testRetryAfterHeaderCalculation",
+        "edu.sezg534.ratelimiter.unit.TokenBucketTest#testConcurrentRequestsEnforceExactCapacity",
+        "edu.sezg534.ratelimiter.unit.TokenBucketTest#testRefillAllowsOneMoreRequestAfterRefillPeriod",
+        "edu.sezg534.ratelimiter.unit.TokenBucketTest#testCapacityBurstAllowedAtSameInstant"
+      ],
+      "line_coverage_pct": 90.44,
+      "total_lines": 136,
+      "covered_lines": 123,
+      "stdout_tail": "",
+      "message": "Tests: 23/23 passed. Line Coverage: 90.4% (Required: >=90%)"
+    },
+    "gate_4_traceability": {
+      "passed": true,
+      "status": "PASS",
+      "defined_acs_count": 14,
+      "covered_acs_count": 14,
+      "coverage_pct": 100.0,
+      "uncovered_acs": [],
+      "ac_mapping": {
+        "AC-01": [
+          "testBurstRequestsReturn200",
+          "testEvaluateReturnsCorrectDecision",
+          "testCapacityBurstAllowedAtSameInstant"
+        ],
+        "AC-02": [
+          "testImmediateExcessReturns429",
+          "testExcessRequestReturns429"
+        ],
+        "AC-03": [
+          "testThrottledResponseContainsRetryAfter",
+          "testRetryAfterHeaderCalculation"
+        ],
+        "AC-04": [
+          "testRefillAllowsOneMoreRequestAfterRefillPeriod"
+        ],
+        "AC-05": [
+          "testTokensNeverExceedCapacityAfterExtendedIdle"
+        ],
+        "AC-06": [
+          "testClientBucketIsolation",
+          "testServiceIsolatesClients"
+        ],
+        "AC-07": [
+          "testServiceEnforcesConfiguredTierLimits",
+          "testTiersConfigurationValues"
+        ],
+        "AC-08": [
+          "testResponseContainsRateLimitHeaders",
+          "testDecisionContainsTelemetryMetrics"
+        ],
+        "AC-09": [
+          "testMissingApiKeyReturns401"
+        ],
+        "AC-10": [
+          "testUnknownApiKeyReturns401",
+          "testUnknownApiKeyReturnsEmpty"
+        ],
+        "AC-11": [
+          "testInvalidConfigValidationFails"
+        ],
+        "AC-12": [
+          "testHealthEndpointNeverRateLimited"
+        ],
+        "AC-13": [
+          "testStoreConcurrentBucketAccess",
+          "testConcurrentRequestsEnforceExactCapacity"
+        ],
+        "AC-14": [
+          "testErrorBodiesNeverEchoFullApiKey"
+        ]
+      },
+      "message": "Traceability: 14/14 ACs covered by passing tests (100.0%)."
+    }
+  },
+  "overall_status": "FAIL",
+  "duration_seconds": 55.7
+}

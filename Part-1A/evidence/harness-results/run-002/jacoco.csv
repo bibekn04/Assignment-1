@@ -1,0 +1,13 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+tiered-rate-limiter,edu.sezg534.ratelimiter.limiter,Decision,0,38,0,0,0,3,0,3,0,3
+tiered-rate-limiter,edu.sezg534.ratelimiter.limiter,RateLimiterService,21,44,7,5,5,12,6,3,1,2
+tiered-rate-limiter,edu.sezg534.ratelimiter.web,ApiErrorHandler,0,38,0,0,0,9,0,2,0,2
+tiered-rate-limiter,edu.sezg534.ratelimiter.web,HealthController,0,8,0,0,0,2,0,2,0,2
+tiered-rate-limiter,edu.sezg534.ratelimiter.web,RateLimitFilter,0,113,2,10,0,28,2,8,0,4
+tiered-rate-limiter,edu.sezg534.ratelimiter.web,ResourceController,0,8,0,0,0,2,0,2,0,2
+tiered-rate-limiter,edu.sezg534.ratelimiter,RateLimiterApplication,5,3,0,0,2,1,1,1,1,1
+tiered-rate-limiter,edu.sezg534.ratelimiter.config,ClockConfig,0,5,0,0,0,2,0,2,0,2
+tiered-rate-limiter,edu.sezg534.ratelimiter.config,TierProperties,0,27,0,0,0,9,0,5,0,5
+tiered-rate-limiter,edu.sezg534.ratelimiter.config,TierProperties.TierConfig,0,26,0,0,0,12,0,6,0,6
+tiered-rate-limiter,edu.sezg534.ratelimiter.bucket,TokenBucket,16,158,3,7,6,36,6,7,3,5
+tiered-rate-limiter,edu.sezg534.ratelimiter.store,InMemoryBucketStore,0,35,0,0,0,7,0,4,0,4

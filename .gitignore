@@ -15,4 +15,6 @@ __pycache__/
 *.pyc
 *.pyo
 .pytest_cache/
+*.pdf
+part_1a_*.md
 evidence/harness-results/run-*/temp/

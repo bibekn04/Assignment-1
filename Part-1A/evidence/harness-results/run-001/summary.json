@@ -1,0 +1,85 @@
+{
+  "run_name": "run-001",
+  "timestamp": "2026-11-01T14:20:14.428987",
+  "git_commit": "5c639b60c4e4bd771f9e80bf8e23eb9d886d78a5",
+  "java_version": "17.0.4.1",
+  "gates": {
+    "gate_0_integrity": {
+      "passed": true,
+      "status": "UNLOCKED",
+      "message": "Baseline not yet locked (Phase 0-6 pre-lock state)."
+    },
+    "gate_1_lint": {
+      "passed": true,
+      "status": "PASS",
+      "violations_count": 0,
+      "violations": [],
+      "stdout_tail": "",
+      "message": "Checkstyle reported 0 violations."
+    },
+    "gate_2_security": {
+      "passed": true,
+      "status": "PASS",
+      "findings_count": 0,
+      "violations": [],
+      "stdout_tail": "",
+      "message": "SpotBugs reported 0 security/correctness findings."
+    },
+    "gate_3_tests": {
+      "passed": false,
+      "status": "FAIL",
+      "total_tests": 0,
+      "passed_tests_count": 0,
+      "failures_count": 0,
+      "failed_tests": [],
+      "passed_tests": [],
+      "line_coverage_pct": 0.0,
+      "total_lines": 0,
+      "covered_lines": 0,
+      "stdout_tail": "B\nProgress (1): 1.9/2.3 MB\nProgress (1): 1.9/2.3 MB\nProgress (1): 1.9/2.3 MB\nProgress (1): 1.9/2.3 MB\nProgress (1): 1.9/2.3 MB\nProgress (1): 1.9/2.3 MB\nProgress (1): 2.0/2.3 MB\nProgress (1): 2.0/2.3 MB\nProgress (1): 2.0/2.3 MB\nProgress (1): 2.0/2.3 MB\nProgress (1): 2.0/2.3 MB\nProgress (1): 2.0/2.3 MB\nProgress (1): 2.1/2.3 MB\nProgress (1): 2.1/2.3 MB\nProgress (1): 2.1/2.3 MB\nProgress (1): 2.1/2.3 MB\nProgress (1): 2.1/2.3 MB\nProgress (1): 2.1/2.3 MB\nProgress (1): 2.2/2.3 MB\nProgress (1): 2.2/2.3 MB\nProgress (1): 2.2/2.3 MB\nProgress (1): 2.2/2.3 MB\nProgress (1): 2.2/2.3 MB\nProgress (1): 2.2/2.3 MB\nProgress (1): 2.2/2.3 MB\nProgress (1): 2.3/2.3 MB\nProgress (1): 2.3/2.3 MB\nProgress (1): 2.3/2.3 MB\nProgress (1): 2.3/2.3 MB\nProgress (1): 2.3/2.3 MB\nProgress (1): 2.3/2.3 MB\nProgress (1): 2.3 MB    \n                    \nDownloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-shared-utils/3.1.2/surefire-shared-utils-3.1.2.jar (2.3 MB at 3.3 MB/s)\n[INFO] No tests to run.\n[INFO] \n[INFO] --- jacoco:0.8.11:report (default-cli) @ tiered-rate-limiter ---\n[INFO] Skipping JaCoCo execution due to missing execution data file.\n[INFO] ------------------------------------------------------------------------\n[INFO] BUILD SUCCESS\n[INFO] ------------------------------------------------------------------------\n[INFO] Total time:  9.132 s\n[INFO] Finished at: 2026-11-01T14:21:47+05:30\n[INFO] ------------------------------------------------------------------------\n",
+      "message": "Tests: 0/0 passed. Line Coverage: 0.0% (Required: >=90%)"
+    },
+    "gate_4_traceability": {
+      "passed": false,
+      "status": "FAIL",
+      "defined_acs_count": 14,
+      "covered_acs_count": 0,
+      "coverage_pct": 0.0,
+      "uncovered_acs": [
+        "AC-01",
+        "AC-02",
+        "AC-03",
+        "AC-04",
+        "AC-05",
+        "AC-06",
+        "AC-07",
+        "AC-08",
+        "AC-09",
+        "AC-10",
+        "AC-11",
+        "AC-12",
+        "AC-13",
+        "AC-14"
+      ],
+      "ac_mapping": {
+        "AC-01": [],
+        "AC-02": [],
+        "AC-03": [],
+        "AC-04": [],
+        "AC-05": [],
+        "AC-06": [],
+        "AC-07": [],
+        "AC-08": [],
+        "AC-09": [],
+        "AC-10": [],
+        "AC-11": [],
+        "AC-12": [],
+        "AC-13": [],
+        "AC-14": []
+      },
+      "message": "Traceability: 0/14 ACs covered by passing tests (0.0%)."
+    }
+  },
+  "overall_status": "FAIL",
+  "duration_seconds": 93.24
+}
