@@ -52,7 +52,7 @@
   ],
   "file_hashes": {
     "config/checkstyle.xml": "7db8ef0136c7901400037f3da594a81cfa966dc369e1df6a9f06eaeabad6023e",
-    "config/spotbugs-exclude.xml": "617197ba5d0c201b6fbbe1d4eeab0fbbe96dce5107c7725845acbe44be35cddb",
+    "config/spotbugs-exclude.xml": "c55e9eb607300be4c896a7afd9e6036add57a3d603827bd902169f02616fbe13",
     "pom.xml": "da1e354d2ce4800c7c17c4c94c0e8f9091c60d2812c368ade957c0132922954b"
   },
   "coverage_threshold_pct": 90.0

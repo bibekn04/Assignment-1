@@ -2,12 +2,12 @@ package edu.sezg534.ratelimiter.config;
 
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.validation.annotation.Validated;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,19 +25,19 @@ public class TierProperties {
     private Map<String, String> clientTiers = new HashMap<>();
 
     public Map<String, TierConfig> getTiers() {
-        return tiers;
+        return Collections.unmodifiableMap(tiers);
     }
 
     public void setTiers(Map<String, TierConfig> tiers) {
-        this.tiers = tiers;
+        this.tiers = (tiers != null) ? new HashMap<>(tiers) : new HashMap<>();
     }
 
     public Map<String, String> getClientTiers() {
-        return clientTiers;
+        return Collections.unmodifiableMap(clientTiers);
     }
 
     public void setClientTiers(Map<String, String> clientTiers) {
-        this.clientTiers = clientTiers;
+        this.clientTiers = (clientTiers != null) ? new HashMap<>(clientTiers) : new HashMap<>();
     }
 
     public static class TierConfig {

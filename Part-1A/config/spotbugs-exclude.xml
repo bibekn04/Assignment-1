@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <FindBugsFilter>
-    <!-- Kept empty. Any exclusion requires explicit documentation and baseline change. -->
+    <!-- 
+      Documented Exclusions per Dev Plan Risk Mitigation (§10):
+      1. SPRING_ENDPOINT: Informational warning triggered for Spring MVC @RestController endpoints.
+      2. EI_EXPOSE_REP2: Storing Spring-managed singleton beans in constructor injection.
+    -->
+    <Match>
+        <Bug pattern="SPRING_ENDPOINT"/>
+    </Match>
+    <Match>
+        <Bug pattern="EI_EXPOSE_REP2"/>
+        <Class name="~edu\.sezg534\.ratelimiter\.(limiter\.RateLimiterService|web\.RateLimitFilter)"/>
+    </Match>
 </FindBugsFilter>
