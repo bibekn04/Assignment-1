@@ -1,0 +1,93 @@
+openapi: 3.0.3
+info:
+  title: Tiered Rate Limiter Microservice API
+  version: 1.0.0
+  description: HTTP API contract for Part 1A Rate Limiter
+paths:
+  /health:
+    get:
+      summary: Health check endpoint
+      description: Returns service status. Never rate limited; requires no API key.
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: UP
+  /api/resource:
+    get:
+      summary: Protected rate-limited resource
+      parameters:
+        - name: X-API-Key
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Request allowed
+          headers:
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+            X-RateLimit-Reset:
+              schema:
+                type: integer
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Access granted"
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Unauthorized"
+                  message:
+                    type: string
+                    example: "Missing or invalid API key"
+        '429':
+          description: Too Many Requests
+          headers:
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+            X-RateLimit-Reset:
+              schema:
+                type: integer
+            Retry-After:
+              schema:
+                type: integer
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Too Many Requests"
+                  message:
+                    type: string
+                    example: "Rate limit exceeded"
+                  retryAfterSeconds:
+                    type: integer
+                    example: 2
