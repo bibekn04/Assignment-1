@@ -1,0 +1,16 @@
+# Example external configuration for tiers and synthetic API keys
+ratelimiter:
+  tiers:
+    free:
+      capacity: 5
+      refill-rate: 1.0
+    pro:
+      capacity: 20
+      refill-rate: 5.0
+    enterprise:
+      capacity: 100
+      refill-rate: 25.0
+  client-tiers:
+    "key_free_synthetic_001": "free"
+    "key_pro_synthetic_002": "pro"
+    "key_ent_synthetic_003": "enterprise"
