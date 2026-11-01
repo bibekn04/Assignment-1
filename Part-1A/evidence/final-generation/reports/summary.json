@@ -1,0 +1,131 @@
+{
+  "run_name": "run-003",
+  "timestamp": "2026-11-01T14:40:28.556565",
+  "git_commit": "fb265283866717d33965eeeb92fc8f7830ae448f",
+  "java_version": "17.0.4.1",
+  "gates": {
+    "gate_0_integrity": {
+      "passed": true,
+      "status": "PASS",
+      "message": "All integrity baseline checks passed."
+    },
+    "gate_1_lint": {
+      "passed": true,
+      "status": "PASS",
+      "violations_count": 0,
+      "violations": [],
+      "stdout_tail": "",
+      "message": "Checkstyle reported 0 violations."
+    },
+    "gate_2_security": {
+      "passed": true,
+      "status": "PASS",
+      "findings_count": 0,
+      "violations": [],
+      "stdout_tail": "",
+      "message": "SpotBugs reported 0 security/correctness findings."
+    },
+    "gate_3_tests": {
+      "passed": true,
+      "status": "PASS",
+      "total_tests": 23,
+      "passed_tests_count": 23,
+      "failures_count": 0,
+      "failed_tests": [],
+      "passed_tests": [
+        "edu.sezg534.ratelimiter.contract.HttpContractTest#testBurstRequestsReturn200",
+        "edu.sezg534.ratelimiter.contract.HttpContractTest#testHealthEndpointNeverRateLimited",
+        "edu.sezg534.ratelimiter.contract.HttpContractTest#testUnknownApiKeyReturns401",
+        "edu.sezg534.ratelimiter.contract.HttpContractTest#testResponseContainsRateLimitHeaders",
+        "edu.sezg534.ratelimiter.contract.HttpContractTest#testMissingApiKeyReturns401",
+        "edu.sezg534.ratelimiter.contract.HttpContractTest#testImmediateExcessReturns429",
+        "edu.sezg534.ratelimiter.contract.HttpContractTest#testErrorBodiesNeverEchoFullApiKey",
+        "edu.sezg534.ratelimiter.contract.HttpContractTest#testThrottledResponseContainsRetryAfter",
+        "edu.sezg534.ratelimiter.unit.InMemoryBucketStoreTest#testStoreConcurrentBucketAccess",
+        "edu.sezg534.ratelimiter.unit.InMemoryBucketStoreTest#testClientBucketIsolation",
+        "edu.sezg534.ratelimiter.unit.RateLimiterServiceTest#testServiceIsolatesClients",
+        "edu.sezg534.ratelimiter.unit.RateLimiterServiceTest#testUnknownApiKeyReturnsEmpty",
+        "edu.sezg534.ratelimiter.unit.RateLimiterServiceTest#testEvaluateReturnsCorrectDecision",
+        "edu.sezg534.ratelimiter.unit.RateLimiterServiceTest#testServiceEnforcesConfiguredTierLimits",
+        "edu.sezg534.ratelimiter.unit.RateLimiterServiceTest#testDecisionContainsTelemetryMetrics",
+        "edu.sezg534.ratelimiter.unit.TierPropertiesTest#testInvalidConfigValidationFails",
+        "edu.sezg534.ratelimiter.unit.TierPropertiesTest#testTiersConfigurationValues",
+        "edu.sezg534.ratelimiter.unit.TokenBucketTest#testExcessRequestReturns429",
+        "edu.sezg534.ratelimiter.unit.TokenBucketTest#testTokensNeverExceedCapacityAfterExtendedIdle",
+        "edu.sezg534.ratelimiter.unit.TokenBucketTest#testRetryAfterHeaderCalculation",
+        "edu.sezg534.ratelimiter.unit.TokenBucketTest#testConcurrentRequestsEnforceExactCapacity",
+        "edu.sezg534.ratelimiter.unit.TokenBucketTest#testRefillAllowsOneMoreRequestAfterRefillPeriod",
+        "edu.sezg534.ratelimiter.unit.TokenBucketTest#testCapacityBurstAllowedAtSameInstant"
+      ],
+      "line_coverage_pct": 90.44,
+      "total_lines": 136,
+      "covered_lines": 123,
+      "stdout_tail": "",
+      "message": "Tests: 23/23 passed. Line Coverage: 90.4% (Required: >=90%)"
+    },
+    "gate_4_traceability": {
+      "passed": true,
+      "status": "PASS",
+      "defined_acs_count": 14,
+      "covered_acs_count": 14,
+      "coverage_pct": 100.0,
+      "uncovered_acs": [],
+      "ac_mapping": {
+        "AC-01": [
+          "testBurstRequestsReturn200",
+          "testEvaluateReturnsCorrectDecision",
+          "testCapacityBurstAllowedAtSameInstant"
+        ],
+        "AC-02": [
+          "testImmediateExcessReturns429",
+          "testExcessRequestReturns429"
+        ],
+        "AC-03": [
+          "testThrottledResponseContainsRetryAfter",
+          "testRetryAfterHeaderCalculation"
+        ],
+        "AC-04": [
+          "testRefillAllowsOneMoreRequestAfterRefillPeriod"
+        ],
+        "AC-05": [
+          "testTokensNeverExceedCapacityAfterExtendedIdle"
+        ],
+        "AC-06": [
+          "testClientBucketIsolation",
+          "testServiceIsolatesClients"
+        ],
+        "AC-07": [
+          "testServiceEnforcesConfiguredTierLimits",
+          "testTiersConfigurationValues"
+        ],
+        "AC-08": [
+          "testResponseContainsRateLimitHeaders",
+          "testDecisionContainsTelemetryMetrics"
+        ],
+        "AC-09": [
+          "testMissingApiKeyReturns401"
+        ],
+        "AC-10": [
+          "testUnknownApiKeyReturns401",
+          "testUnknownApiKeyReturnsEmpty"
+        ],
+        "AC-11": [
+          "testInvalidConfigValidationFails"
+        ],
+        "AC-12": [
+          "testHealthEndpointNeverRateLimited"
+        ],
+        "AC-13": [
+          "testStoreConcurrentBucketAccess",
+          "testConcurrentRequestsEnforceExactCapacity"
+        ],
+        "AC-14": [
+          "testErrorBodiesNeverEchoFullApiKey"
+        ]
+      },
+      "message": "Traceability: 14/14 ACs covered by passing tests (100.0%)."
+    }
+  },
+  "overall_status": "PASS",
+  "duration_seconds": 52.07
+}
