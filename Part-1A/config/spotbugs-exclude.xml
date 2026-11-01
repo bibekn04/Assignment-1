@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+    <!-- Kept empty. Any exclusion requires explicit documentation and baseline change. -->
+</FindBugsFilter>
