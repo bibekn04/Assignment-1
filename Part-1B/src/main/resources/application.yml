@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: semantic-code-reviewer
+
+codereview:
+  llm:
+    provider: gemini
+    model: gemini-1.5-flash
+    apiKey: ${GEMINI_API_KEY:}
+    temperature: 0.2
+    maxTokens: 2048
+  guardrail:
+    maxCodeLength: 50000
+    blockPromptInjection: true
+    redactSecrets: true
