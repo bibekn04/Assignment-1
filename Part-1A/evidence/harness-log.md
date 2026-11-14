@@ -84,3 +84,15 @@ This document records the chronological record of all automated harness verifica
 * **Known Limitations & Residual Risks**:
   1. *In-Memory State*: Rate limit buckets reside in memory (`ConcurrentHashMap`). If the service restarts or runs across multi-instance clusters, bucket state is not shared without a distributed adapter (e.g., Redis).
   2. *Static API Key Lookup*: Tier resolution uses static mapping from configuration rather than an identity provider / JWT service.
+
+### Harness Execution: `run-004`
+- **Timestamp**: 2026-11-14 09:57:14
+- **Commit**: `unknown`
+- **Overall Outcome**: **PASS**
+- **Gate Results**:
+  - Gate 0 (Integrity): `PASS` - All integrity baseline checks passed.
+  - Gate 1 (Lint): `PASS` - Checkstyle reported 0 violations.
+  - Gate 2 (Security): `PASS` - SpotBugs reported 0 security/correctness findings.
+  - Gate 3 (Tests & Coverage): `PASS` - Tests: 23/23 passed. Line Coverage: 90.4% (Required: >=90%)
+  - Gate 4 (Traceability): `PASS` - Traceability: 14/14 ACs covered by passing tests (100.0%).
+- **Run Artifacts**: `evidence/harness-results/run-004/`
