@@ -17,6 +17,7 @@ Assignment-1/
 ├── Part-1A/
 │   ├── .specify/            # GitHub Spec Kit memory & constitution
 │   ├── specs/               # Feature specification, technical plan, data model, tasks
+│   ├── tests/               # Pointer to unit & contract test suites
 │   ├── pom.xml              # Maven build file (Java 17 baseline)
 │   ├── src/                 # Application source and tests
 │   ├── .harness/            # Deterministic harness gates (Integrity, Lint, SAST, Tests, Traceability)
@@ -26,6 +27,7 @@ Assignment-1/
     ├── specs/               # Feature spec, technical plan, schema contract, tasks
     ├── prompts/             # System prompt & user prompt templates
     ├── evals/               # dataset.json (16 benchmark cases across 8 failure categories)
+    ├── tests/               # Pointer to unit, contract, and guardrail test suites
     ├── pom.xml              # Maven build file (Java 17, Spring Boot 3.2.3)
     ├── src/                 # Source code, guardrails, LLM client, and contract tests
     ├── .harness/            # Non-deterministic evaluation harness (evaluator.py, run_harness.py)
@@ -50,7 +52,7 @@ python .harness/run_harness.py
 - Gate 0 (Integrity): PASS
 - Gate 1 (Lint / Checkstyle): PASS
 - Gate 2 (SAST / SpotBugs & FindSecBugs): PASS
-- Gate 3 (Deterministic Concurrency & Contract Tests): PASS (10/10 tests pass)
+- Gate 3 (Deterministic Concurrency & Contract Tests): PASS (23/23 tests pass, line coverage >= 90%)
 - Gate 4 (Traceability): PASS (100% AC coverage)
 - Final Result: `>>> ALL DETERMINISTIC GATES PASSED <<<`
 

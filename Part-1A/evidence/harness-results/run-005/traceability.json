@@ -1,0 +1,62 @@
+{
+  "passed": true,
+  "status": "PASS",
+  "defined_acs_count": 14,
+  "covered_acs_count": 14,
+  "coverage_pct": 100.0,
+  "uncovered_acs": [],
+  "ac_mapping": {
+    "AC-01": [
+      "testBurstRequestsReturn200",
+      "testEvaluateReturnsCorrectDecision",
+      "testCapacityBurstAllowedAtSameInstant"
+    ],
+    "AC-02": [
+      "testImmediateExcessReturns429",
+      "testExcessRequestReturns429"
+    ],
+    "AC-03": [
+      "testThrottledResponseContainsRetryAfter",
+      "testRetryAfterHeaderCalculation"
+    ],
+    "AC-04": [
+      "testRefillAllowsOneMoreRequestAfterRefillPeriod"
+    ],
+    "AC-05": [
+      "testTokensNeverExceedCapacityAfterExtendedIdle"
+    ],
+    "AC-06": [
+      "testClientBucketIsolation",
+      "testServiceIsolatesClients"
+    ],
+    "AC-07": [
+      "testServiceEnforcesConfiguredTierLimits",
+      "testTiersConfigurationValues"
+    ],
+    "AC-08": [
+      "testResponseContainsRateLimitHeaders",
+      "testDecisionContainsTelemetryMetrics"
+    ],
+    "AC-09": [
+      "testMissingApiKeyReturns401"
+    ],
+    "AC-10": [
+      "testUnknownApiKeyReturns401",
+      "testUnknownApiKeyReturnsEmpty"
+    ],
+    "AC-11": [
+      "testInvalidConfigValidationFails"
+    ],
+    "AC-12": [
+      "testHealthEndpointNeverRateLimited"
+    ],
+    "AC-13": [
+      "testStoreConcurrentBucketAccess",
+      "testConcurrentRequestsEnforceExactCapacity"
+    ],
+    "AC-14": [
+      "testErrorBodiesNeverEchoFullApiKey"
+    ]
+  },
+  "message": "Traceability: 14/14 ACs covered by passing tests (100.0%)."
+}

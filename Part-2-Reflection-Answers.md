@@ -2,7 +2,7 @@
 **Course:** AI-Augmented Software Development Life Cycle (SE* ZG534)  
 **Total Marks:** 5 (1 mark each)  
 **Student Name / ID:** Akshaya Ganesan / 2026-SEZG534  
-**GitHub Repository:** [Public Repository URL]  
+**GitHub Repository:** https://github.com/bibekn04/Assignment-1  
 **Demonstration Video Link:** [Google Drive / OneDrive Link]  
 
 ---
@@ -20,9 +20,15 @@ During the specification phase, Constitution Principle **P6** ("The response MUS
 **Prompt:** Describe one issue detected by the deterministic harness that would have been missed or less reliably detected by simply asking the coding agent to review its own output. State the relevant harness gate/evidence and how the issue was resolved.
 
 **Response:**
-In Part 1A (Tiered Rate Limiter Microservice), the deterministic harness detected a critical **concurrent race condition and time-window drift** under high multithreaded contention that self-review failed to catch. 
-During development, the coding agent initially implemented token replenishment using a standard `long lastRefillTimestamp` with non-atomic arithmetic (`Math.min(capacity, tokens + delta)`). When self-reviewing the code, the LLM stated the logic was *"clean, thread-safe, and correct"*, exhibiting confirmation bias. 
-However, Harness Gate **Gate 3 (Deterministic Concurrency & Contract Test)** executed 50 concurrent client threads requesting tokens simultaneously against `InMemoryRateLimiter`. The harness captured an assertion failure: 12 excess requests were permitted beyond the strict 100 req/min tier threshold because concurrent threads read a stale token count simultaneously before writing back. The structured failure evidence (`AssertionError: Expected 429 TOO_MANY_REQUESTS at request #101, but got 200 OK`) was fed back to the agent. The issue was resolved by replacing plain variables with `AtomicLong` and utilizing a synchronized CAS (Compare-And-Swap) refill loop and a mockable `MutableClock`, guaranteeing atomic token consumption and satisfying Gate 3 with zero test failures.
+In Part 1A (Tiered Rate Limiter Microservice), the deterministic harness detected a critical **internal mutable representation exposure vulnerability (`EI_EXPOSE_REP` / `EI_EXPOSE_REP2`)** in `TierProperties.java` that LLM self-review completely failed to catch.
+
+During initial generation, the coding agent wrote standard JavaBean getter and setter methods returning and assigning the internal `Map<String, TierConfig>` directly (`return tiers;` and `this.tiers = tiers;`). When prompted to review its own generated code, the LLM exhibited confirmation bias, declaring the implementation *"idiomatic, well-structured, and clean"*, overlooking that returning live references to internal mutable collections allows any external caller or thread to mutate tier rate limits at runtime without synchronization.
+
+However, the automated deterministic harness rejected the build in execution `run-002`. Harness Gate **Gate 2 (SAST / SpotBugs + FindSecBugs Guard)** analyzed the compiled bytecode and flagged 8 security/correctness violations (`evidence/harness-results/run-002/summary.json` and `feedback.md`), specifically citing:
+- `EI_EXPOSE_REP: edu.sezg534.ratelimiter.config.TierProperties.getTiers() may expose internal representation by returning TierProperties.tiers`
+- `EI_EXPOSE_REP2: edu.sezg534.ratelimiter.config.TierProperties.setTiers(Map) may expose internal representation by storing an externally mutable object`
+
+The structured failure evidence was fed back to the coding agent. The issue was resolved in production code by returning defensive unmodifiable views (`Collections.unmodifiableMap(...)`) in getters and creating defensive copies (`new HashMap<>(...)`) in setters. In addition, the concurrency contract test in Gate 3 (`AC-13`, `TokenBucketTest#testConcurrentRequestsEnforceExactCapacity`) independently validated atomic bucket refills and synchronized consumption under 50 concurrent client threads. On re-execution (`run-003`), Gate 2 reported 0 SpotBugs violations and Gate 3 passed all 23 tests, achieving a clean PASS across all 5 gates.
 
 ---
 
