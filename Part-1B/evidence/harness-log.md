@@ -2,7 +2,7 @@
 **Part 1B: Non-Deterministic AI Application Harnessing**  
 **Course:** AI-Augmented Software Development Life Cycle (SE* ZG534)  
 **Date:** 2026-11-14  
-**Author / Student ID:** Bibek Kumar Nayak  
+**Author / Student ID:** Bibek Kumar Nayak (2026ns93016)  
 
 ---
 

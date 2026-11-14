@@ -1,7 +1,8 @@
 # ASSIGNMENT 1 — PART 2: ASSESSED REFLECTION QUESTIONS
 **Course:** AI-Augmented Software Development Life Cycle (SE* ZG534)  
 **Total Marks:** 5 (1 mark each)  
-**Student Name / ID:** Bibek Kumar Nayak / [Your BITS Student ID]  
+**Student Name / ID:** Bibek Kumar Nayak / 2026ns93016  
+**BITS Email:** 2026ns93016@wilp.bits-pilani.ac.in  
 **GitHub Repository:** https://github.com/bibekn04/Assignment-1  
 **Demonstration Video Link:** [Google Drive / OneDrive Link]  
 
